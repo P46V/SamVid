@@ -2,14 +2,15 @@ import cv2
 import sys
 import time
 import numpy as np
- 
+import os
+import errno
+import shutil
 
 if __name__ == '__main__' :
  
-    
-    #video encoding,setup for writing
-    fourcc = cv2.VideoWriter_fourcc(*'XVID') 
-    out = cv2.VideoWriter('/home/akarsh/Desktop/output.avi', fourcc, 20.0, (1280, 720)) 
+    #provide path to video
+    VIDEO_PATH= "/home/akarsh/Desktop/video.mp4"
+    PATH_TO_SAVE= "/home/akarsh/Desktop"
     # Set up tracker.
     #tracker_types = ['BOOSTING', 'MIL','KCF', 'TLD', 'MEDIANFLOW', 'CSRT', 'MOSSE']
     tracker_type = 'KCF'
@@ -29,7 +30,13 @@ if __name__ == '__main__' :
     if not ok:
         print('Cannot read video file')
         sys.exit()
-     
+    try:
+        os.mkdir(PATH_TO_SAVE+"/multipt")
+    except OSError as error:
+        if error.errno == errno.EEXIST:
+            shutil.rmtree(PATH_TO_SAVE+"/multipt")
+            os.mkdir(PATH_TO_SAVE+"/multipt")
+        else :print(error)
     # Define an initial bounding box
     bbox = (287, 23, 86, 320)
  
@@ -63,8 +70,8 @@ if __name__ == '__main__' :
             crp_frame=frame[p1[1]:p2[1],p1[0]:p2[0]]
             #out.write(crp_frame) not working
             #uncomment for saving frames
-            #if np.shape(crp_frame) != ():
-            #    cv2.imwrite("/home/akarsh/Desktop/patches/"+str(timer)+".jpg",crp_frame)
+            if np.shape(crp_frame) != ():
+                cv2.imwrite(PATH_TO_SAVE+"/multipt/"+str(timer)+".jpg",crp_frame)
  
         else :
             # Tracking failure
