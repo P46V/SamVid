@@ -90,7 +90,8 @@ while video.isOpened():
             #uncomment for saving frames
             #print(i)
             if np.shape(crp_frame) != ():
-                cv2.imwrite(PATH_TO_SAVE+"/multipt/"+str(i)+"/"+str(timer)+".jpg",crp_frame)
+                if crp_frame.size !=0:
+                    cv2.imwrite(PATH_TO_SAVE+"/multipt/"+str(i)+"/"+str(timer)+".jpg",crp_frame)
         
     else :
         # Tracking failure
