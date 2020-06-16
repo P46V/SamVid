@@ -16,7 +16,7 @@ if __name__ == '__main__' :
     tracker_type = 'KCF'
     tracker = cv2.TrackerKCF_create()
     # Read video
-    video = cv2.VideoCapture("/home/akarsh/Desktop/video.mp4")
+    video = cv2.VideoCapture("VIDEO_PATH")
     #time.sleep(2.0)
     # Exit if video not opened.
     if not video.isOpened():
@@ -71,7 +71,8 @@ if __name__ == '__main__' :
             #out.write(crp_frame) not working
             #uncomment for saving frames
             if np.shape(crp_frame) != ():
-                cv2.imwrite(PATH_TO_SAVE+"/multipt/"+str(timer)+".jpg",crp_frame)
+                if crp_frame.size !=0:
+                    cv2.imwrite(PATH_TO_SAVE+"/multipt/"+str(timer)+".jpg",crp_frame)
  
         else :
             # Tracking failure
