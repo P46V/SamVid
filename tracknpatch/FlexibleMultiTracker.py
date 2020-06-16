@@ -47,7 +47,8 @@ while True:
             crp_frame=frame[y+2:y+h-2,x+2:x+w-2]
             #uncomment for saving frames
             if np.shape(crp_frame) != ():
-                cv2.imwrite(PATH_TO_SAVE+"/multipt/"+str(i)+"/"+str(timer)+".jpg",crp_frame)
+		if crp_frame.size !=0:
+                    cv2.imwrite(PATH_TO_SAVE+"/multipt/"+str(i)+"/"+str(timer)+".jpg",crp_frame)
 
     else :
         # Tracking failure
