@@ -3,6 +3,19 @@ Implementing [OpenSfM](https://github.com/mapillary/OpenSfM/tree/master/opensfm)
 * Tracking multiple Patches using patch trackers in OpenCV
 * Converting the Patches to 3D Image Reconstructions using OpenSfM
 For this project,We have implemented the code on [this video](https://youtu.be/MZFL6t0vX8o)
+
+
+Project done as an internship project at Samsung by:
+
+Project Leader:
+Bhaskar Jha
+(bhaskar1.jha@samsung.com)
+
+Developers:
+Akarsh Arya
+(arya.akarsh@gmail.com)
+,Parv Sood
+(soodparv@gmail.com)
 ##  Pre-Requisites:
 * [opencv-contrib-python](https://github.com/mapillary/OpenSfM/tree/master/opensfm)
 * Python with OpenCV library installed.
